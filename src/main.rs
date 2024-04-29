@@ -6,31 +6,31 @@ fn main() {
     // echo::start_server();
     // chat::start_server();
     // proxy::start_server();
-    let p1 = Person { name: "zhangsan" };
-    let p2 = Person { name: "wangerxiao" };
-    who(p1);
-    who(p2);
+    let cat = Cat;
+    let dog = Dog;
+    sound_off(&cat);
+    sound_off(&dog);
 }
 
-trait Action {
-    fn run(&self);
-    fn say(&self);
+trait Animal {
+    fn make_sound(&self);
 }
 
-struct Person<'a> {
-    name: &'a str,
-}
+struct Cat;
+struct Dog;
 
-impl Action for Person<'_> {
-    fn run(&self) {
-        println!("{} runing...", self.name);
-    }
-    fn say(&self) {
-        println!("{} saying...", self.name);
+impl Animal for Cat {
+    fn make_sound(&self) {
+        println!("Meow ...");
     }
 }
 
-fn who(person: Person) {
-    person.run();
-    person.say();
+impl Animal for Dog {
+    fn make_sound(&self) {
+        println!("Woof ...");
+    }
+}
+
+fn sound_off(animal: &dyn Animal) {
+    animal.make_sound();
 }
