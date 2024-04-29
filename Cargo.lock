@@ -12,11 +12,16 @@ version = "0.1.0"
 dependencies = [
  "chat",
  "echo",
+ "inferface",
  "proxy",
 ]
 
 [[package]]
 name = "echo"
+version = "0.1.0"
+
+[[package]]
+name = "inferface"
 version = "0.1.0"
 
 [[package]]
