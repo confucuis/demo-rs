@@ -17,9 +17,18 @@ impl Animal for Dog {
     }
 }
 
-pub fn sound_off(animal: &dyn Animal) {
+// trait bound 语法的语法糖
+// &impl Animal | &dyn Animal
+pub fn sound_wawa(animal: &impl Animal) {
     animal.make_sound();
 }
+
+// trait bound 语法
+pub fn sound_meme<T: Animal>(animal: &T) {
+    animal.make_sound();
+}
+
+// sound_wawa函数签名等价于sound_meme函数签名
 
 #[cfg(test)]
 mod tests {

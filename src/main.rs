@@ -10,6 +10,6 @@ fn main() {
 
     let cat = inferface::Cat;
     let dog = inferface::Dog;
-    inferface::sound_off(&cat);
-    inferface::sound_off(&dog);
+    inferface::sound_wawa(&cat);
+    inferface::sound_meme(&dog);
 }
