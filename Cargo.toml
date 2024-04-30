@@ -9,4 +9,3 @@ edition = "2021"
 echo = { path = "echo" }
 chat = { path = "chat" }
 proxy =  {path = "proxy" }
-interface = { path = "interface" }

@@ -12,16 +12,11 @@ version = "0.1.0"
 dependencies = [
  "chat",
  "echo",
- "interface",
  "proxy",
 ]
 
 [[package]]
 name = "echo"
-version = "0.1.0"
-
-[[package]]
-name = "interface"
 version = "0.1.0"
 
 [[package]]
