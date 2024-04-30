@@ -1,7 +1,6 @@
 ### trait bound
 
-* *结构体*
-0x01:
+* *结构体0x01*  
 ```
 // 定义一个泛型结构体，其中的泛型参数必须同时实现Debug和Clone trait
 #[derive(Debug, Clone)]
@@ -11,7 +10,7 @@ struct Pair<T: Debug + Clone> {
 }
 ```
 
-0x02:
+* *结构体0x02*
 ```
 // 定义一个结构体，其中的泛型参数必须同时实现Debug和Clone trait
 #[derive(Debug, Clone)]
@@ -25,8 +24,7 @@ where
 }
 ```
 
-* *函数*
-0x01:
+* *函数0x01*
 ```
 // 定义一个函数show，该函数接受两个泛型参数，并要求它们同时实现Debug和Display trait
 fn show<T: std::fmt::Debug + std::fmt::Display>(value1: T, value2: T) {
@@ -35,7 +33,7 @@ fn show<T: std::fmt::Debug + std::fmt::Display>(value1: T, value2: T) {
 }
 ```
 
-0x02:
+* *函数0x02*
 ```
 // 定义一个函数show，该函数接受两个泛型参数，并要求它们同时实现Debug和Display trait
 fn show<T, U>(value1: T, value2: U)
