@@ -1,15 +1,15 @@
 // use echo;
 // use chat;
 // use proxy;
-use inferface;
+use interface;
 
 fn main() {
     // echo::start_server();
     // chat::start_server();
     // proxy::start_server();
 
-    let cat = inferface::Cat;
-    let dog = inferface::Dog;
-    inferface::sound_wawa(&cat);
-    inferface::sound_meme(&dog);
+    let cat = interface::Cat;
+    let dog = interface::Dog;
+    interface::sound_wawa(&cat);
+    interface::sound_meme(&dog);
 }

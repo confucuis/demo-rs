@@ -1,4 +1,8 @@
-# 接口
+### 接口
 
-**test**  
+**测试库**  
 cd interface && cargo test
+
+
+**trait bound**  
+trait 作为参数
