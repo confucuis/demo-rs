@@ -27,7 +27,9 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+        let cat = inferface::Cat;
+        let dog = inferface::Dog;
+        inferface::sound_off(&cat);
+        inferface::sound_off(&dog);
     }
 }
