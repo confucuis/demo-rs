@@ -8,4 +8,4 @@ edition = "2021"
 [dependencies]
 echo = { path = "echo" }
 chat = { path = "chat" }
-proxy =  {path = "proxy" }
+proxy =  { path = "proxy" }
