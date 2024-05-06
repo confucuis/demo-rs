@@ -17,7 +17,7 @@ impl Animal for Dog {
     }
 }
 
-// trait bound 语法的语法糖
+// trait bound 的语法糖
 // &impl Animal | &dyn Animal
 pub fn sound_wawa(animal: &impl Animal) {
     animal.make_sound();
