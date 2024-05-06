@@ -19,7 +19,7 @@ impl Circle {
         return self.radius * self.radius * 3.14;
     }
 
-    pub fn modify_radius(self: &mut Self, r: f64) {
-        self.radius = r;
+    pub fn modify_radius(self: &mut Self, radius: f64) {
+        self.radius = radius;
     }
 }
