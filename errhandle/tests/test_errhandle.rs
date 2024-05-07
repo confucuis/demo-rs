@@ -12,7 +12,7 @@ mod tests {
 
     #[test]
     fn test_wirte_file() {
-        match errhandle::write_to_file("hello rust") {
+        match errhandle::write_to_file("hello rust\n") {
             Ok(_) => println!("Write to file successful!"),
             Err(err) => println!("{:?}", err),
         }
