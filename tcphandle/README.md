@@ -1,9 +1,9 @@
 ### TCP粘包处理
 
-*) 消息边界
-*) 在消息中使用特殊字符或字节序列作为分隔符，比如换行符 \n 或者特定的结束符号
-*) 接收端根据分隔符来拆分消息，每次读取一行或者一段完整的数据
-[server]
+*) 消息边界  
+*) 在消息中使用特殊字符或字节序列作为分隔符，比如换行符 \n 或者特定的结束符号  
+*) 接收端根据分隔符来拆分消息，每次读取一行或者一段完整的数据  
+[server]  
 ```
 use std::io::{Read, BufReader};
 
@@ -25,7 +25,8 @@ fn handle_connection(stream: TcpStream) {
     }
 }
 ```
-[client]
+
+[client]  
 ```
 use std::io::{Write};
 use std::net::TcpStream;
@@ -37,9 +38,10 @@ fn main() {
 }
 ```
 
-*) 固定长度消息
-*) 在消息中预先定义消息的长度，然后在接收端读取指定长度的字节
-*) 可以使用 std::io::Read::read_exact() 方法来确保读取到足够长度的数据
+*) 固定长度消息  
+*) 在消息中预先定义消息的长度，然后在接收端读取指定长度的字节  
+*) 可以使用 std::io::Read::read_exact() 方法来确保读取到足够长度的数据  
+[server]  
 ```
 use std::io::{Read, BufReader};
 
@@ -63,7 +65,7 @@ fn handle_connection(stream: TcpStream) {
 }
 ```
 
-[client]
+[client]  
 ```
 use std::io::{Write};
 use std::net::TcpStream;
@@ -79,9 +81,9 @@ fn main() {
 }
 ```
 
-*) 长度前缀法
-*) 在消息开头加上一个表示消息长度的前缀，通常使用固定长度的整数来表示消息的长度
-*) 接收端先读取前缀以确定消息长度，然后再读取相应长度的消息内容
+*) 长度前缀法  
+*) 在消息开头加上一个表示消息长度的前缀，通常使用固定长度的整数来表示消息的长度  
+*) 接收端先读取前缀以确定消息长度，然后再读取相应长度的消息内容  
 [server]
 ```
 use std::io::{Read, BufReader, Error};
@@ -105,7 +107,7 @@ fn handle_connection(stream: TcpStream) -> Result<(), Error> {
 }
 ```
 
-[client]
+[client]  
 ```
 use std::io::{Write};
 use std::net::TcpStream;
