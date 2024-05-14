@@ -1,7 +1,5 @@
-use std::io::{Read, Write};
+use std::io::Write;
 use std::net::TcpStream;
-
-const MESSAGE_SIZE: usize = 4; // 消息长度前缀的大小
 
 fn send_message(stream: &mut TcpStream, message: &str) -> std::io::Result<()> {
     // 将消息转换为字节流
@@ -9,6 +7,7 @@ fn send_message(stream: &mut TcpStream, message: &str) -> std::io::Result<()> {
     let message_len = message_bytes.len();
 
     // 将消息长度作为前缀写入连接
+    // message_len as u32 与server.rs中的MESSAGE_SIZE对应
     let len_prefix = (message_len as u32).to_be_bytes();
     stream.write_all(&len_prefix)?;
 
@@ -29,3 +28,4 @@ pub fn run_client() {
         Err(e) => eprintln!("Failed to send message: {}", e),
     }
 }
+

@@ -1,4 +1,4 @@
-use std::io::{Read, Write};
+use std::io::Read;
 use std::net::{TcpListener, TcpStream};
 
 const MESSAGE_SIZE: usize = 4; // 消息长度前缀的大小
@@ -46,3 +46,4 @@ pub fn run_server() {
         }
     }
 }
+
