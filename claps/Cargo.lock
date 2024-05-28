@@ -26,10 +26,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 
 [[package]]
-name = "chat"
-version = "0.1.0"
-
-[[package]]
 name = "clap"
 version = "3.2.25"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -69,18 +65,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "demo-rs"
+name = "claps"
 version = "0.1.0"
 dependencies = [
- "chat",
  "clap",
- "echo",
- "proxy",
 ]
-
-[[package]]
-name = "echo"
-version = "0.1.0"
 
 [[package]]
 name = "hashbrown"
@@ -163,10 +152,6 @@ checksum = "ec96c6a92621310b51366f1e28d05ef11489516e93be030060e5fc12024a49d6"
 dependencies = [
  "unicode-ident",
 ]
-
-[[package]]
-name = "proxy"
-version = "0.1.0"
 
 [[package]]
 name = "quote"
