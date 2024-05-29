@@ -22,21 +22,15 @@ where
     let mul = |item: T| -> T { num * item };
     let div = |item: T| -> T { num / item };
 
+    let option = |x: u32, y: u32| -> u32 { x + y };
+    println!("Option: {:?}", option(3u32, 5u32));
+
     match ops {
         Arithmetic::Add => return add(num),
         Arithmetic::Sub => return sub(num),
         Arithmetic::Mul => return mul(num),
         Arithmetic::Div => return div(num),
     }
-
-    // let result = add(num);
-    // println!("Add result: {:?}", result);
-    // let result = sub(num);
-    // println!("Sub result: {:?}", result);
-    // let result = mul(num);
-    // println!("Mul result: {:?}", result);
-    // let result = div(num);
-    // println!("Div result: {:?}", result);
 }
 
 #[cfg(test)]
