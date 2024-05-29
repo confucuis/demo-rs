@@ -10,7 +10,12 @@ pub enum Arithmetic {
 
 pub fn arithmetic<T>(num: T, ops: Arithmetic) -> T
 where
-    T: Copy + Add<Output=T> + Mul<Output=T> + Sub<Output=T> + Div<Output=T> + Debug,
+    T: Copy + 
+       Debug + 
+       Add<Output=T> + 
+       Mul<Output=T> + 
+       Sub<Output=T> + 
+       Div<Output=T> ,
 {
     let add = |item: T| -> T { num + item };
     let sub = |item: T| -> T { num - item };
