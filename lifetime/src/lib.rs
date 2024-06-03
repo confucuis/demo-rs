@@ -18,11 +18,21 @@ fn max<'a, 'b: 'a>(m: &'a u32, n: &'b u32) -> &'a u32 {
     }
 }
 
-// - 结构体中的生命周期
+// - 结构体和impl中的生命周期
 //   结构体成员是出借方,结构体本身是借用方
-#[derive(Debug)]
-struct Person<'a> {
-    pub name: &'a str,
+//   下面的示例表示Foo结构体和他的方法都一个生命周期参数'a
+struct Foo<'a> {
+    data: &'a str,
+}
+
+impl<'a> Foo<'a> {
+    fn new(data: &'a str) -> Foo<'a> {
+        Foo { data }
+    }
+
+    fn get_data(&self) -> &'a str {
+        self.data
+    }
 }
 
 // - 静态生命周期变量: 'static
@@ -39,7 +49,7 @@ mod tests {
         let n = 200;
         println!("{}", max(&m, &n));
 
-        let p = Person { name: "zhangsan" };
-        println!("{:?}", p);
+        let foo = Foo::new("hello world");
+        println!("{:?}", foo.get_data());
     }
 }
