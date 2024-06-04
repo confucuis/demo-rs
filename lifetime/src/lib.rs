@@ -10,7 +10,7 @@
 // - 函数中的生命周期
 //   下面的函数max中,函数参数是出借方,函数返回值是借用方
 //   'b: 'a 标注'a的生命周期不能超过'b
-fn max<'a, 'b: 'a>(m: &'a u32, n: &'b u32) -> &'a u32 {
+pub fn max<'a, 'b: 'a>(m: &'a u32, n: &'b u32) -> &'a u32 {
     if m > n {
         &m
     } else {
@@ -21,7 +21,7 @@ fn max<'a, 'b: 'a>(m: &'a u32, n: &'b u32) -> &'a u32 {
 // - 结构体和impl中的生命周期
 //   结构体成员是出借方,结构体本身是借用方
 //   下面的示例表示Foo结构体和他的方法都一个生命周期参数'a
-struct Foo<'a> {
+pub struct Foo<'a> {
     data: &'a str,
 }
 
@@ -49,7 +49,12 @@ mod tests {
         let n = 200;
         println!("{}", max(&m, &n));
 
+        {
+            let o = 300;
+            println!("{}", max(&n, &o));
+        }
+
         let foo = Foo::new("hello world");
-        println!("{:?}", foo.get_data());
+        println!("{}", foo.get_data());
     }
 }
