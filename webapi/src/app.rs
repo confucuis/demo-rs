@@ -3,46 +3,45 @@ use axum::Router;
 
 pub fn new() -> Router {
     Router::new()
-        .merge(test::create_route())
-        .merge(demo::create_route())
+        .merge(foo::create_route())
+        .merge(bar::create_route())
 }
 
-mod test {
+mod foo {
     use axum::{Router, routing::get};
     pub(crate) fn create_route() -> Router {
         Router::new()
-            .route("/test", get(test))
+            .route("/foo", get(foo))
     }
 
-    async fn test() ->&'static str {
-        "this is a test"
+    async fn foo() ->&'static str {
+        "this is a foo test"
     }
 }
 
-mod demo {
+mod bar {
     use serde::{Deserialize, Serialize};
     use axum::{Router, routing::post, http::StatusCode, Json, extract};
 
     pub(crate) fn create_route() -> Router {
         Router::new()
-            .route("/demo", post(demo))
+            .route("/bar", post(bar))
     }
 
     #[derive(Deserialize)]
-    struct CreateUser {
-        username: String,
+    struct CreateBar {
+        bar: String,
     }
 
     // the output to our `create_user` handler
     #[derive(Serialize)]
-    struct User {
+    struct Bar {
         id: u64,
-        username: String,
+        bar: String,
     }
-    async fn demo(extract::Json(payload): extract::Json<CreateUser>) -> (StatusCode, Json<User>) {
-        let user = User{id: 1001, username: payload.username};
+    async fn bar(extract::Json(payload): extract::Json<CreateBar>) -> (StatusCode, Json<Bar>) {
+        let bar = Bar{id: 1001, bar: payload.bar};
 
-        (StatusCode::CREATED, Json(user))
+        (StatusCode::CREATED, Json(bar))
     }
 }
-
