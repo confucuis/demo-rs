@@ -1,0 +1,5 @@
+### webapi
+
+curl http://127.0.0.1:8883/test  
+curl http://127.0.0.1:8883/demo -XPOST -H "Content-Type: application/json" -d '{"username": "zhangsan"}'  
+
