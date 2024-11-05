@@ -1,6 +1,6 @@
-trait Primeter {
+trait Perimeter {
     type Item;
-    fn primeter(&self) -> Self::Item;
+    fn perimeter(&self) -> Self::Item;
 }
 
 trait Extend {
@@ -13,9 +13,9 @@ struct Circle {
     radius: f64,
 }
 
-impl Primeter for Circle {
+impl Perimeter for Circle {
     type Item = f64;
-    fn primeter(&self) -> Self::Item {
+    fn perimeter(&self) -> Self::Item {
         2.0 * 3.14 * self.radius
     }
 }
@@ -32,9 +32,9 @@ struct Square {
     side: u64,
 }
 
-impl Primeter for Square {
+impl Perimeter for Square {
     type Item = u64;
-    fn primeter(&self) -> Self::Item {
+    fn perimeter(&self) -> Self::Item {
         4 * self.side
     }
 }
@@ -46,12 +46,32 @@ impl Extend for Square {
     }
 }
 
-fn calculations_primeter<T: Primeter>(shap: &T) -> T::Item {
-    shap.primeter()
+#[derive(Clone)]
+struct Rectangle {
+    width: u64,
+    height: u64,
 }
 
-fn calculations_extend<T: Extend>(shap: &T) -> T::Item {
-    shap.extend()
+impl Perimeter for Rectangle {
+    type Item = u64;
+    fn perimeter(&self) -> Self::Item {
+        2 * (self.width + self.height)
+    }
+}
+
+impl Extend for Rectangle {
+    type Item = u64;
+    fn extend(&self) -> Self::Item {
+        self.width * self.height
+    }
+}
+
+fn calculate_perimeter<T: Perimeter>(shape: &T) -> T::Item {
+    shape.perimeter()
+}
+
+fn calculate_extend<T: Extend>(shape: &T) -> T::Item {
+    shape.extend()
 }
 
 #[cfg(test)]
@@ -62,14 +82,19 @@ mod tests {
     fn it_works() {
         let circle = Circle { radius: 2.5 };
         let square = Square { side: 4 };
-        let circle_primter = calculations_primeter(&circle);
-        let square_primter = calculations_primeter(&square);
-        let circle_extend = calculations_extend(&circle);
-        let square_extend = calculations_extend(&square);
+        let rectangle = Rectangle{width: 3, height: 4 };
+        let circle_perimeter = calculate_perimeter(&circle);
+        let square_perimeter = calculate_perimeter(&square);
+        let rectangle_perimeter = calculate_perimeter(&rectangle);
+        let circle_extend = calculate_extend(&circle);
+        let square_extend = calculate_extend(&square);
+        let rectangle_extend = calculate_extend(&rectangle);
 
-        assert_eq!(format!("{:.1}", circle_primter), "15.7");
-        assert_eq!(square_primter, 16);
+        assert_eq!(format!("{:.1}", circle_perimeter), "15.7");
+        assert_eq!(square_perimeter, 16);
         assert_eq!(format!("{:.1}", circle_extend), "19.6");
         assert_eq!(square_extend, 16);
+        assert_eq!(rectangle_perimeter, 14);
+        assert_eq!(rectangle_extend, 12);
     }
 }
