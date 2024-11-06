@@ -48,4 +48,23 @@ mod tests {
         producer_thread.join().unwrap();
         consumer_thread.join().unwrap();
     }
+
+    #[test]
+    fn its_works() {
+        // 创建一个向量来存储线程句柄
+        let mut handles = vec![];
+
+        // 启动10个线程
+        for i in 0..10 {
+            let handle = thread::spawn(move || {
+                println!("线程 {} 正在执行任务", i);
+            });
+            handles.push(handle);
+        }
+
+        // 等待所有线程完成
+        for handle in handles {
+            handle.join().unwrap();
+        }
+    }
 }
